@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Udbhav Awasthi - Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: #fff;
+    }
+
+    h1, h2, h3 {
+      color: #ff8c42;
+    }
+
+    /* Top Section Layout */
+    #top-section {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 50px;
+      padding: 30px 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Profile */
+    .profile {
+      text-align: center;
+	  margin-right: 0px;
+    }
+    .profile img {
+      width: 160px;
+      height: 250px;
+      border-radius: 50%;
+      border: 4px solid #ff8c42;
+      box-shadow: 0 0 25px #ff8c42;
+	  margin-top: 50px;
+    }
+
+    /* Skill categories */
+    .skills {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .category {
+      background: #222;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(255,140,66,0.6);
+    }
+
+    .category h3 {
+      margin: 0 0 10px;
+      color: #ff8c42;
+    }
+
+    .skill-list {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .skill {
+      background: #333;
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .skill:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 15px #ffc857;
+    }
+
+    /* Header Box */
+    .header-box {
+      background: #222;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255,140,66,0.7);
+      max-width: 350px;
+      text-align: left;
+    }
+
+    .header-box h1 {
+      margin-bottom: 15px;
+    }
+
+    .header-box p {
+      line-height: 1.6;
+    }
+
+    /* Projects */
+    #projects {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .projects-grid {
+      display: grid;
+	  grid-template-columns: repeat(2, 1fr); /* 2 projects per row */
+      gap: 20px;
+	  max-width: 900px;  /* keeps it centered and not stretched too wide */
+      margin: auto;
+    }
+
+    .project-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255,140,66,0.6);
+    }
+
+    .project-card img {
+      width: 100%;
+      display: block;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .project-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay a {
+      margin-top: 10px;
+      padding: 6px 12px;
+      background: #ff8c42;
+      border-radius: 8px;
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+    }
+	.project-card3 {
+	     position: relative;
+	     overflow: hidden;
+	     border-radius: 15px;
+	     box-shadow: 0 0 20px rgba(255,140,66,0.6);
+	   }
+
+	   .project-card img {
+	     width: 100%;
+	     display: block;
+	   }
+
+	   .overlay {
+	     position: absolute;
+	     top: 0; left: 0;
+	     width: 100%; height: 100%;
+	     background: rgba(0,0,0,0.8);
+	     color: #fff;
+	     display: flex;
+	     flex-direction: column;
+	     align-items: center;
+	     justify-content: center;
+	     opacity: 0;
+	     transition: opacity 0.4s;
+	   }
+
+	   .project-card:hover .overlay {
+	     opacity: 1;
+	   }
+
+	   .overlay a {
+	     margin-top: 10px;
+	     padding: 6px 12px;
+	     background: #ff8c42;
+	     border-radius: 8px;
+	     color: #111;
+	     text-decoration: none;
+	     font-weight: bold;
+	   }
+    /* Certificates Flip Cards */
+    #certificates {
+      padding: 60px 20px;
+      text-align: center;
+    }
+
+    .cert-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .certificate-card {
+      perspective: 1000px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+    }
+
+    .certificate-card:hover .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%; height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(255,140,66,0.6);
+      background: #222;
+    }
+
+    .card-back {
+      transform: rotateY(180deg);
+      background: #111;
+    }
+
+    .card-back a {
+      color: #ff8c42;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Sidebar Contact */
+    #contact-sidebar {
+      position: fixed;
+      top: 40%;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    #contact-sidebar a {
+      font-size: 24px;
+      color: #fff;
+      background: #222;
+      padding: 10px;
+      border-radius: 50%;
+      box-shadow: 0 0 15px #ff8c42;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    #contact-sidebar a:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 25px #ffc857;
+      color: #ffc857;
+    }
+	/* About Section */
+	#about {
+	  padding: 60px 20px;
+	  text-align: center;
+	}
+
+	#about h2 {
+	  color: #ff8c42;
+	  margin-bottom: 20px;
+	}
+
+	.about-box {
+	  background: #222;
+	  padding: 30px;
+	  border-radius: 15px;
+	  max-width: 800px;
+	  margin: auto;
+	  box-shadow: 0 0 25px rgba(255,140,66,0.7);
+	  line-height: 1.8;
+	  font-size: 16px;
+	}
+
+	.highlight {
+	  color: #ffc857;
+	  font-weight: bold;
+	}
+
+	.game-link {
+	  display: inline-block;
+	  margin-top: 20px;
+	  padding: 10px 18px;
+	  background: #ff8c42;
+	  border-radius: 8px;
+	  color: #111;
+	  text-decoration: none;
+	  font-weight: bold;
+	  transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.game-link:hover {
+	  transform: scale(1.1);
+	  box-shadow: 0 0 20px #ffc857;
+	  color: #fff;
+	}
+
+  </style>
+</head>
+<body>
+
+  <!-- Top Section -->
+  <section id="top-section">
+    <div class="profile">
+      <img src="images/portfolioimage.jpg" alt="Profile">
+    </div>
+
+    <div class="skills">
+      <div class="category">
+        <h3>Frontend</h3>
+        <div class="skill-list">
+          <div class="skill">HTML</div>
+          <div class="skill">CSS</div>
+		  <div class="skill">BootStrap</div>
+		  <div class="skill">Tailwind</div>
+          <div class="skill">React.js</div>
+        </div>
+      </div>
+      <div class="category">
+        <h3>Backend</h3>
+        <div class="skill-list">
+          <div class="skill">Java SE</div>
+		  <div class="skill">Java EE</div>
+          <div class="skill">Spring Boot</div>
+          <div class="skill">Express.js</div>
+		  <div class="skill">Node.js</div>
+        </div>
+      </div>
+      <div class="category">
+        <h3>Tools</h3>
+        <div class="skill-list">
+          <div class="skill">MySQL</div>
+		  <div class="skill">PostgreSQL</div>
+		  <div class="skill">MongoDB</div>
+          <!--<div class="skill">AWS</div>
+          <div class="skill">Docker</div>-->
+          <div class="skill">GitHub</div>
+        </div>
+      </div>
+    </div>
+
+    <header>
+      <div class="header-box">
+        <h1>Udbhav Awasthi</h1>
+        <p>FullStack Developer | Java | Spring Boot | React | SQL/NoSQL | GitHub</p>
+      </div>
+    </header>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="images/Screenshot 2025-09-09 234727.png" alt="Portfolio Website">
+        <div class="overlay">
+          <h3>VedSangam-An Astrology Website</h3>
+          <p>Node.js+React.js+MongoDB</p>
+		  <a href="https://github.com/dgbru77/VedSangam" 
+		     onclick="event.preventDefault(); 
+		              Swal.fire({
+		                text: 'This project is not hosted currently, but source code is available.',
+		                icon: 'info',
+		                confirmButtonText: 'OK'
+		              }).then((result) => {
+		                if (result.isConfirmed) {
+		                  window.location.href = 'https://github.com/dgbru77/VedSangam';
+		                }
+		              });">
+		     View Project
+		  </a>
+
+
+        </div>
+      </div>
+      <div class="project-card">
+        <img src="images/Screenshot 2025-09-10 000735.png" alt="Blog System">
+        <div class="overlay">
+          <h3>SoulSpace</h3>
+          <p>J2EE+PostgreSQL</p>
+		  <a href="https://github.com/dgbru77/SoulSpace" 
+		  	     onclick="event.preventDefault(); 
+		  	              Swal.fire({
+		  	                text: 'This project is not hosted currently, but source code is available.',
+		  	                icon: 'info',
+		  	                confirmButtonText: 'OK'
+		  	              }).then((result) => {
+		  	                if (result.isConfirmed) {
+		  	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
+		  	                }
+		  	              });">
+		  	     View Project
+		  	  </a>
+        </div>
+      </div>
+	  <div class="project-card">
+	     <img src="images/Screenshot 2025-09-10 002115.png" alt="Blog System">
+	     <div class="overlay">
+	       <h3>MyDiary-A Blog Website</h3>
+	       <p>J2EE+PostgreSQL</p>
+		   <a href="https://github.com/dgbru77/MyDiary" 
+		   	     onclick="event.preventDefault(); 
+		   	              Swal.fire({
+		   	                text: 'This project is not hosted currently, but source code is available.',
+		   	                icon: 'info',
+		   	                confirmButtonText: 'OK'
+		   	              }).then((result) => {
+		   	                if (result.isConfirmed) {
+		   	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
+		   	                }
+		   	              });">
+		   	     View Project
+		   	  </a>
+
+	     </div>
+	   </div>
+	   <div class="project-card">
+	        <img src="images/Screenshot 2025-09-10 003632.png" alt="Blog System">
+	        <div class="overlay">
+	          <h3>MapMyService</h3>
+	          <p>J2EE+MySQL</p>
+			  <a href="https://github.com/dgbru77/MapMyService" 
+			  	     onclick="event.preventDefault(); 
+			  	              Swal.fire({
+			  	                text: 'This project is not hosted currently, but source code is available.',
+			  	                icon: 'info',
+			  	                confirmButtonText: 'OK'
+			  	              }).then((result) => {
+			  	                if (result.isConfirmed) {
+			  	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
+			  	                }
+			  	              });">
+			  	     View Project
+			  	  </a>
+	        </div>
+	      </div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="cert-grid">
+      <div class="certificate-card">
+        <div class="card-inner">
+          <div class="card-front"><h3>Java Basics</h3><p>LearnTube</p></div>
+          <div class="card-back"><a href="images/cert1.jpg" target="_blank">View</a></div>
+        </div>
+      </div>
+      <div class="certificate-card">
+        <div class="card-inner">
+          <div class="card-front"><h3>MERN Stack</h3><p>TuteDude</p></div>
+          <div class="card-back"><a href="#" >Uploading it Soon.</a></div>
+        </div>
+      </div>
+	  <div class="certificate-card">
+	    <div class="card-inner">
+	      <div class="card-front"><h3>UI/UX</h3><p>TuteDude</p></div>
+	      <div class="card-back"><a href="#" >Uploading it Soon.</a></div>
+	    </div>
+	  </div>
+	  <div class="certificate-card">
+	    <div class="card-inner">
+	      <div class="card-front"><h3>Java Basics</h3><p>Precursor</p></div>
+	      <div class="card-back"><a href="images/cert2.jpg" >View.</a></div>
+	    </div>
+	  </div>
+	  <div class="certificate-card">
+	    <div class="card-inner">
+	      <div class="card-front"><h3>Java Advance</h3><p>Precursor</p></div>
+	      <div class="card-back"><a href="#" >Uploading it Soon.</a></div>
+	    </div>
+	  </div>
+	  <div class="certificate-card">
+	    <div class="card-inner">
+	      <div class="card-front"><h3>Java Core</h3><p>Precursor</p></div>
+	      <div class="card-back"><a href="images/cert3.jpg" target="_blank">View</a></div>
+	    </div>
+	  </div>
+	  <div class="certificate-card">
+	  	    <div class="card-inner">
+	  	      <div class="card-front"><h3>J2EE Internship</h3><p>Precursor</p></div>
+	  	      <div class="card-back"><a href="#" >Uploading it Soon.</a></div>
+	  	    </div>
+	  	  </div>
+    </div>
+  </section>
+
+  <!-- Sidebar Contact -->
+  <div id="contact-sidebar">
+    <a href="mailto:udbhavawasthi7@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.linkedin.com/in/udbhav-awasthi-8b2641271/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://github.com/dgbru77" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+  <!-- About Me -->
+  <section id="about">
+    <h2>About Me</h2>
+    <div class="about-box">
+      <p>
+        Hey there! I am a <span class="highlight">Full-Stack Developer</span> with expertise in 
+        <span class="highlight">Spring Boot</span>, <span class="highlight">React.js</span>, 
+        <span class="highlight">J2EE</span>, <span class="highlight">Java SE</span>, SQL and NoSQL.  
+        I have also worked profoundly with <span class="highlight">Express.js</span> and <span class="highlight">Node.js.</span> 
+        I am a passionate <span class="highlight">tech-enthusiast</span> who loves exploring and learning new things.  
+        Currently, I am expanding my knowledge in <span class="highlight">Automation with n8n</span>.
+      </p>
+      <a href="game.html" class="game-link">🎮 Unlock My Skills</a>
+    </div>
+  </section>
+
+</body>
+</html>
