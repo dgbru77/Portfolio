@@ -353,8 +353,6 @@
           <div class="skill">MySQL</div>
 		  <div class="skill">PostgreSQL</div>
 		  <div class="skill">MongoDB</div>
-          <!--<div class="skill">AWS</div>
-          <div class="skill">Docker</div>-->
           <div class="skill">GitHub</div>
         </div>
       </div>
@@ -369,94 +367,70 @@
   </section>
 
   <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <img src="images/Screenshot 2025-09-09 234727.png" alt="Portfolio Website">
-        <div class="overlay">
-          <h3>VedSangam-An Astrology Website</h3>
-          <p>Node.js+React.js+MongoDB</p>
-		  <a href="https://github.com/dgbru77/VedSangam" 
-		     onclick="event.preventDefault(); 
-		              Swal.fire({
-		                text: 'This project is not hosted currently, but source code is available.',
-		                icon: 'info',
-		                confirmButtonText: 'OK'
-		              }).then((result) => {
-		                if (result.isConfirmed) {
-		                  window.location.href = 'https://github.com/dgbru77/VedSangam';
-		                }
-		              });">
-		     View Project
-		  </a>
+<!-- Projects -->
+<section id="projects">
+  <h2>Projects</h2>
 
+  <div class="projects-grid">
 
-        </div>
+    <!-- ✅ NEW: KnowYourMood Project (HOSTED) -->
+    <div class="project-card">
+      <img src="images/Screenshot 2025-11-10 144911.png" alt="KnowYourMood Screenshot">
+      <div class="overlay">
+        <h3>KnowYourMood - Mood Tracking App</h3>
+        <p>React (Vite) + Spring Boot + MySQL + Railway + Vercel</p>
+        <a href="https://know-your-mood-frontend.vercel.app/login" target="_blank">
+          Open Project
+        </a>
+        <a href="https://github.com/dgbru77/KnowYourMood" target="_blank">
+          Source Code
+        </a>
       </div>
-      <div class="project-card">
-        <img src="images/Screenshot 2025-09-10 000735.png" alt="Blog System">
-        <div class="overlay">
-          <h3>SoulSpace</h3>
-          <p>J2EE+PostgreSQL</p>
-		  <a href="https://github.com/dgbru77/SoulSpace" 
-		  	     onclick="event.preventDefault(); 
-		  	              Swal.fire({
-		  	                text: 'This project is not hosted currently, but source code is available.',
-		  	                icon: 'info',
-		  	                confirmButtonText: 'OK'
-		  	              }).then((result) => {
-		  	                if (result.isConfirmed) {
-		  	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
-		  	                }
-		  	              });">
-		  	     View Project
-		  	  </a>
-        </div>
-      </div>
-	  <div class="project-card">
-	     <img src="images/Screenshot 2025-09-10 002115.png" alt="Blog System">
-	     <div class="overlay">
-	       <h3>MyDiary-A Blog Website</h3>
-	       <p>J2EE+PostgreSQL</p>
-		   <a href="https://github.com/dgbru77/MyDiary" 
-		   	     onclick="event.preventDefault(); 
-		   	              Swal.fire({
-		   	                text: 'This project is not hosted currently, but source code is available.',
-		   	                icon: 'info',
-		   	                confirmButtonText: 'OK'
-		   	              }).then((result) => {
-		   	                if (result.isConfirmed) {
-		   	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
-		   	                }
-		   	              });">
-		   	     View Project
-		   	  </a>
-
-	     </div>
-	   </div>
-	   <div class="project-card">
-	        <img src="images/Screenshot 2025-09-10 003632.png" alt="Blog System">
-	        <div class="overlay">
-	          <h3>MapMyService</h3>
-	          <p>J2EE+MySQL</p>
-			  <a href="https://github.com/dgbru77/MapMyService" 
-			  	     onclick="event.preventDefault(); 
-			  	              Swal.fire({
-			  	                text: 'This project is not hosted currently, but source code is available.',
-			  	                icon: 'info',
-			  	                confirmButtonText: 'OK'
-			  	              }).then((result) => {
-			  	                if (result.isConfirmed) {
-			  	                  window.location.href = 'https://github.com/dgbru77/VedSangam';
-			  	                }
-			  	              });">
-			  	     View Project
-			  	  </a>
-	        </div>
-	      </div>
     </div>
-  </section>
+
+    <!-- Existing Project 1 -->
+    <div class="project-card">
+      <img src="images/Screenshot 2025-09-09 234727.png" alt="Portfolio Website">
+      <div class="overlay">
+        <h3>VedSangam - Astrology Website</h3>
+        <p>Node.js + React.js + MongoDB</p>
+        <a href="https://github.com/dgbru77/VedSangam" target="_blank">View Code</a>
+      </div>
+    </div>
+
+    <!-- Existing Project 2 -->
+    <div class="project-card">
+      <img src="images/Screenshot 2025-09-10 000735.png" alt="SoulSpace">
+      <div class="overlay">
+        <h3>SoulSpace</h3>
+        <p>Java (J2EE) + PostgreSQL</p>
+        <a href="https://github.com/dgbru77/SoulSpace" target="_blank">View Code</a>
+      </div>
+    </div>
+
+    <!-- Existing Project 3 -->
+    <div class="project-card">
+      <img src="images/Screenshot 2025-09-10 002115.png" alt="MyDiary">
+      <div class="overlay">
+        <h3>MyDiary - Blog Platform</h3>
+        <p>Java (J2EE) + PostgreSQL</p>
+        <a href="https://github.com/dgbru77/MyDiary" target="_blank">View Code</a>
+      </div>
+    </div>
+
+    <!-- Existing Project 4 -->
+    <div class="project-card">
+      <img src="images/Screenshot 2025-09-10 003632.png" alt="MapMyService">
+      <div class="overlay">
+        <h3>MapMyService</h3>
+        <p>Java (J2EE) + MySQL</p>
+        <a href="https://github.com/dgbru77/MapMyService" target="_blank">View Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 
   <!-- Certificates -->
   <section id="certificates">
@@ -531,6 +505,7 @@
 
 </body>
 </html>
+
 
 
 
